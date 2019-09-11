@@ -1,12 +1,28 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% for post in posts %}
-    <div class='collection-post'>
-        <h2 class='post-title'>{{ post.title }}</h2>
-        <span class='post-author'>{{ post.author }}</span>
-        <span class='post-date'>{{  post.published_date }}</span>
-        <img class='post-photo' src='{{ post.photo.url }}'>
-    </div>
-    {% endfor %}
+    {% if is_author %}
+        <a>Dodaj nowe zdjęcie</a>
+        {% for post in posts %}
+            <div class='collection-post'>
+                <h2 class='post-title'>{{ post.title }}</h2>
+                <span class='post-author'>{{ post.author }}</span>
+                <span class='post-date'>{{  post.published_date }}</span>
+                <img class='post-photo' src='{{ post.photo.url }}'>
+                <a>Edytuj zdjęcie</a>
+                <a>Usuń zdjęcie</a>
+            </div>
+            {% empty %}
+            <p>Dodaj swoje zdjęcia i pokaż innym co u Ciebie</p>
+        {% endfor %}
+    {% else %}
+        {% for post in posts %}
+            <div class='collection-post'>
+                <h2 class='post-title'>{{ post.title }}</h2>
+                <span class='post-author'>{{ post.author }}</span>
+                <span class='post-date'>{{  post.published_date }}</span>
+                <img class='post-photo' src='{{ post.photo.url }}'>
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}
