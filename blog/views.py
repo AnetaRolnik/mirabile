@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.utils import timezone
 from .models import Post
+from django.http import HttpResponseForbidden
 
 def collection(request, **kwargs):
     context = {}
@@ -12,3 +13,16 @@ def collection(request, **kwargs):
             context['is_author'] = True
     context['posts'] = posts
     return render(request, 'blog/collection.html', context)
+
+def post_delete(request, pk, id):
+    obj = get_object_or_404(Post, id=id)
+    if not request.user.id == obj.author.id:
+        return HttpResponseForbidden()
+
+    if request.method == "POST":
+        obj.delete()
+        return redirect(reverse('collection', kwargs={'pk': pk}))
+    context = {
+        "object": obj
+    }
+    return render(request, 'blog/base.html', context)

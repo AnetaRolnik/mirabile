@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function showModal() {
         const image = this.parentElement.querySelector('img').src;
+        const url = this.dataset.url;
         modal.querySelector('img').src = image;
+        modal.querySelector('form').action = url;
         modal.style.display = 'block';
     }
 

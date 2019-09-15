@@ -9,7 +9,7 @@
                 <span class='post-date'>{{  post.published_date }}</span>
                 <img class='post-photo' src='{{ post.photo.url }}'>
                 <a class='post-edit'>Edytuj zdjęcie</a>
-                <button class='post-delete'>Usuń zdjęcie</button>
+                <button class='post-delete' data-url='{% url "post_delete" pk=post.author.id id=post.id %}'>Usuń zdjęcie</button>
             </div>
             {% empty %}
             <p class='collection-empty'>Dodaj swoje zdjęcia i pokaż innym co u Ciebie</p>
