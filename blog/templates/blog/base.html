@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src='../../static/js/confirm_delete.js'></script>
+    <script src='../../static/js/post_detail.js'></script>
     <title>Mirabile</title>
 </head>
 <body>
@@ -30,6 +31,15 @@
             <input class='modal-confirm' type='submit' value='Tak'>
             <button class='modal-cancel'>Anuluj</button>
         </form>
+    </div>
+    <div class="modal-content post-detail" style="display: none">
+        <img class='detail-photo' src=''>
+        <div class='detail-info'>
+            <h2 class='info-title'>Tytuł</h2>
+            <span class='info-author'>Autor</span>
+            <span class='info-date'>Data</span>
+        </div>
+        <button class='detail-close'>Close</button>
     </div>
 </body>
 </html>
