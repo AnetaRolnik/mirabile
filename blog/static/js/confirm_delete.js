@@ -1,15 +1,15 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    const deletePost = document.querySelectorAll('.post-delete');
-    const modal = document.querySelector('.confirm-delete');
-    const cancelModal = document.querySelector('.modal-cancel');
+    const deletePost = document.querySelectorAll('.post-delete'),
+        modal = document.querySelector('.confirm-delete'),
+        cancelModal = modal.querySelector('.modal-cancel'),
+        imageModal = modal.querySelector('img'),
+        formModal = modal.querySelector('form');
 
     function showModal() {
-        const image = this.parentElement.querySelector('img').src;
-        const url = this.dataset.url;
-        modal.querySelector('img').src = image;
-        modal.querySelector('form').action = url;
         modal.style.display = 'block';
+        imageModal.src = this.parentElement.querySelector('img').src;
+        formModal.action = this.dataset.url;
     }
 
     function hideModal() {

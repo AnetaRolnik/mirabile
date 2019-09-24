@@ -4,7 +4,7 @@
     {% if is_author %}
         <a class='collection-new'>Dodaj nowe zdjęcie</a>
         {% for post in posts %}
-            <div class='collection-post'>
+            <div class='collection-post' data-title='{{ post.title }}'>
                 <span class='post-author'>{{ post.author }}</span>
                 <span class='post-date'>{{  post.published_date }}</span>
                 <a class='post-show'>
