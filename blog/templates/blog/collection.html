@@ -2,29 +2,33 @@
 
 {% block content %}
     {% if is_author %}
-        <a class='collection-new'>Dodaj nowe zdjęcie</a>
-        {% for post in posts %}
-            <div class='collection-post' data-title='{{ post.title }}'>
-                <span class='post-author'>{{ post.author }}</span>
-                <span class='post-date'>{{  post.published_date }}</span>
-                <a class='post-show'>
-                    <img class='post-photo' src='{{ post.photo.url }}'>
-                </a>
-                <a class='post-edit'>Edytuj zdjęcie</a>
-                <button class='post-delete' data-url='{% url "post_delete" pk=post.author.id id=post.id %}'>Usuń zdjęcie</button>
-            </div>
-            {% empty %}
-            <p class='collection-empty'>Dodaj swoje zdjęcia i pokaż innym co u Ciebie</p>
-        {% endfor %}
+        <div class='collection'>
+            <a class='collection-new' href='{% url "post_new" %}'>Dodaj nowe zdjęcie</a>
+            {% for post in posts %}
+                <div class='collection-post' data-title='{{ post.title }}'>
+                    <span class='post-author'>{{ post.author }}</span>
+                    <span class='post-date'>{{  post.published_date }}</span>
+                    <a class='post-show'>
+                        <img class='post-photo' src='{{ post.photo.url }}'>
+                    </a>
+                    <a class='post-edit'>Edytuj zdjęcie</a>
+                    <button class='post-delete' data-url='{% url "post_delete" pk=post.author.id id=post.id %}'>Usuń zdjęcie</button>
+                </div>
+                {% empty %}
+                <p class='collection-empty'>Twoja kolekcja jest pusta :( Dodaj swoje zdjęcia i pokaż innym co u Ciebie</p>
+            {% endfor %}
+        </div>
     {% else %}
-        {% for post in posts %}
-            <div class='collection-post'>
-                <span class='post-author'>{{ post.author }}</span>
-                <span class='post-date'>{{  post.published_date }}</span>
-                <a class='post-show'>
-                    <img class='post-photo' src='{{ post.photo.url }}'>
-                </a>
-            </div>
-        {% endfor %}
+        <div class="collection">
+            {% for post in posts %}
+                <div class='collection-post'>
+                    <span class='post-author'>{{ post.author }}</span>
+                    <span class='post-date'>{{  post.published_date }}</span>
+                    <a class='post-show'>
+                        <img class='post-photo' src='{{ post.photo.url }}'>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}

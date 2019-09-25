@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.utils import timezone
 from .models import Post
+from .forms import PostForm
 from django.http import HttpResponseForbidden
 
 def collection(request, **kwargs):
@@ -26,3 +27,19 @@ def post_delete(request, pk, id):
         "object": obj
     }
     return render(request, 'blog/base.html', context)
+
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('collection')
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_new.html', {"form": form})
+
+
+  

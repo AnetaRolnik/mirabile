@@ -6,5 +6,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.collection, name='collection'),
     path('<int:pk>/', views.collection, name='collection'),
-    path('<int:pk>/post/<int:id>/delete', views.post_delete, name='post_delete')
+    path('<int:pk>/post/<int:id>/delete', views.post_delete, name='post_delete'),
+    path('post/new', views.post_new, name='post_new'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
