@@ -15,19 +15,6 @@ def collection(request, **kwargs):
     context['posts'] = posts
     return render(request, 'blog/collection.html', context)
 
-def post_delete(request, id):
-    obj = get_object_or_404(Post, id=id)
-    if not request.user.id == obj.author.id:
-        return HttpResponseForbidden()
-
-    if request.method == "POST":
-        obj.delete()
-        return redirect('collection')
-    context = {
-        "object": obj
-    }
-    return render(request, 'blog/base.html', context)
-
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -36,13 +23,29 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('collection')
+            return redirect(reverse('collection', kwargs={'pk': post.author.id}))
     else:
         form = PostForm()
     return render(request, 'blog/post_new.html', {"form": form})
 
+def post_delete(request, id):
+    post = get_object_or_404(Post, id=id)
+    if not request.user.id == post.author.id:
+        return HttpResponseForbidden()
+
+    if request.method == "POST":
+        post.delete()
+        return redirect(reverse('collection', kwargs={'pk': post.author.id}))
+    context = {
+        "post": post
+    }
+    return render(request, 'blog/base.html', context)
+
 def post_edit(request, id):
     post = get_object_or_404(Post, id=id)
+    if not request.user.id == post.author.id:
+        return HttpResponseForbidden()
+
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
@@ -50,7 +53,7 @@ def post_edit(request, id):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('collection')
+            return redirect(reverse('collection', kwargs={'pk': post.author.id}))
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_new.html', {"form": form})
