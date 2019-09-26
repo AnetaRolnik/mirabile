@@ -15,14 +15,14 @@ def collection(request, **kwargs):
     context['posts'] = posts
     return render(request, 'blog/collection.html', context)
 
-def post_delete(request, pk, id):
+def post_delete(request, id):
     obj = get_object_or_404(Post, id=id)
     if not request.user.id == obj.author.id:
         return HttpResponseForbidden()
 
     if request.method == "POST":
         obj.delete()
-        return redirect(reverse('collection', kwargs={'pk': pk}))
+        return redirect('collection')
     context = {
         "object": obj
     }
@@ -39,6 +39,20 @@ def post_new(request):
             return redirect('collection')
     else:
         form = PostForm()
+    return render(request, 'blog/post_new.html', {"form": form})
+
+def post_edit(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('collection')
+    else:
+        form = PostForm(instance=post)
     return render(request, 'blog/post_new.html', {"form": form})
 
 

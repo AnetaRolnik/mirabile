@@ -11,8 +11,8 @@
                     <a class='post-show'>
                         <img class='post-photo' src='{{ post.photo.url }}'>
                     </a>
-                    <a class='post-edit'>Edytuj zdjęcie</a>
-                    <button class='post-delete' data-url='{% url "post_delete" pk=post.author.id id=post.id %}'>Usuń zdjęcie</button>
+                    <a class='post-edit' href='{% url "post_edit" id=post.id %}'>Edytuj zdjęcie</a>
+                    <button class='post-delete' data-url='{% url "post_delete" id=post.id %}'>Usuń zdjęcie</button>
                 </div>
                 {% empty %}
                 <p class='collection-empty'>Twoja kolekcja jest pusta :( Dodaj swoje zdjęcia i pokaż innym co u Ciebie</p>
