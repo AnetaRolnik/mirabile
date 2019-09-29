@@ -21,7 +21,6 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
             post.save()
             return redirect(reverse('collection', kwargs={'pk': post.author.id}))
     else:
@@ -51,7 +50,6 @@ def post_edit(request, id):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
             post.save()
             return redirect(reverse('collection', kwargs={'pk': post.author.id}))
     else:
