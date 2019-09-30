@@ -120,3 +120,11 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'blog/static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/media')
+
+FLATPICKR_SETTINGS = {
+    'options': {
+        "time_24hr": True,
+        "allowInput": True,
+        "dateFormat": "d-m-Y H:i",
+    }
+}
