@@ -20,6 +20,9 @@ def post_new(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
+            if form.cleaned_data.get('manage_post') == 'now':
+                post.published_date = timezone.now()
+            print(form.cleaned_data)
             post.author = request.user
             post.save()
             return redirect(reverse('collection', kwargs={'pk': post.author.id}))
