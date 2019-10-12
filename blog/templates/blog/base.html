@@ -12,18 +12,26 @@
     {% endblock %}
     {% block extra_js %}
     {% endblock %}
+
+<link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <title>Mirabile</title>
 </head>
 <body>
     <header class='page-header'>
         <span class='header-logo'>Mirabile</span>
-        <div class='header-link'>
-            <a href='#' class='link-logn'>Zaloguj się</a>
-            <a href='#' class='link-register'>Zarejestruj się</a>
+        <div class='header-link dropdown-menu'>
+            <button class="header dropdown-button">Key</button>
+            <div class="dropdown-content" hidden>
+                <a href='#' class='link-logn'>Zaloguj się</a>
+                <a href='#' class='link-register'>Zarejestruj się</a>
+            </div>
         </div>
     </header>
+    <div class="page-content">
     {% block content %}
     {% endblock %}
+    </div>
     <footer class='page-footer'>
         &copy Copyright 2019
     </footer>
@@ -46,3 +54,9 @@
     </div>
 </body>
 </html>
+
+{% block static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/normalize.css' %}">
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

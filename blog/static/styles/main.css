@@ -1,0 +1,24 @@
+.page-header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 40px;
+    padding-top:5px;
+    text-align: center;
+    background-color:white;
+}
+.header-logo {
+    color: #df2080;
+    font-family: 'Leckerli One', cursive;
+    font-size: 2em;
+}
+
+.header-link {
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.page-content{
+    margin-top: 30px;
+}
