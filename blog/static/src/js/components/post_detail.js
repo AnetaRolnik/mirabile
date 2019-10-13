@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+export default function postDetail() {
     const showPost = document.querySelectorAll('.post-show'),
         modal = document.querySelector('.post-detail'),
         cancelModal = modal.querySelector('.detail-close'),
@@ -23,4 +23,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
         showPost[i].addEventListener('click', showDetail);
     }
     cancelModal.addEventListener('click', hidePost);
-});
+}

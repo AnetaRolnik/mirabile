@@ -5,27 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src='../../static/js/confirm_delete.js'></script>
-    <script src='../../static/js/post_detail.js'></script>
-    <script src='../../static/js/manage_post.js'></script>
+    <script src="../../static/dist/bundle.min.js"></script>
+    <link href="../../static/dist/style.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     {% block extra_css %}
     {% endblock %}
     {% block extra_js %}
     {% endblock %}
-
-<link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <title>Mirabile</title>
 </head>
 <body>
     <header class='page-header'>
         <span class='header-logo'>Mirabile</span>
-        <div class='header-link dropdown-menu'>
-            <button class="header dropdown-button">Key</button>
-            <div class="dropdown-content" hidden>
-                <a href='#' class='link-logn'>Zaloguj się</a>
-                <a href='#' class='link-register'>Zarejestruj się</a>
-            </div>
+        <div class='header-link'>
+            <a href='#' class='link-logn'>Zaloguj się</a>
+            <a href='#' class='link-register'>Zarejestruj się</a>
         </div>
     </header>
     <div class="page-content">
@@ -54,9 +49,3 @@
     </div>
 </body>
 </html>
-
-{% block static %}
-<link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'styles/normalize.css' %}">
-<script src="{% static 'js/main.js' %}"></script>
-{% endblock %}

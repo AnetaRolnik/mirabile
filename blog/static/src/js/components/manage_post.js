@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+export default function managePost() {
     const publishedDate = document.querySelector('#publishedDate').parentElement,
         options = document.querySelectorAll('#managePost input'),
         laterPublish = document.querySelector('#managePost_1');
@@ -14,4 +14,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         });
     }
-})
+}
