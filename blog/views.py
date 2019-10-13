@@ -4,6 +4,7 @@ from .models import Post
 from .forms import PostForm
 from django.http import HttpResponseForbidden
 
+
 def collection(request, **kwargs):
     context = {}
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -60,4 +61,4 @@ def post_edit(request, id):
     return render(request, 'blog/post_new.html', {"form": form})
 
 
-  
+
