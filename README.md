@@ -10,6 +10,8 @@ App for adding and displaying posts with login. Our goal is to create an aesthet
 
 ### Installation
 
+    npm install
+
 Project should be installed using (Python 3.6+) standard:
 
     pip install -r requirements.txt
