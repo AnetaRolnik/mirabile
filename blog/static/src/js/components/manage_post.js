@@ -1,16 +1,16 @@
 export default function managePost() {
-    const publishedDate = document.querySelector('#publishedDate').parentElement,
+    const publishedDate = document.querySelector('#publishedDate'),
         options = document.querySelectorAll('#managePost input'),
         laterPublish = document.querySelector('#managePost_1');
 
-    publishedDate.style.display = 'none';
+    publishedDate !== null ? publishedDate.parentElement.style.display = 'none' : null;
 
     for (let i = 0; i < options.length; i++) {
         options[i].addEventListener('change', function() {
             if(laterPublish.checked === true) {
-                publishedDate.style.display = 'block';
+                publishedDate.parentElement.style.display = 'block';
             } else {
-                publishedDate.style.display = 'none';
+                publishedDate.parentElement.style.display = 'none';
             }
         });
     }
