@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="../../static/dist/bundle.min.js"></script>
     <link href="../../static/dist/style.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Leckerli+One&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel='shortcut icon' type='image/x-icon' href='../../static/images/favicon.ico' />
     {% block extra_css %}
     {% endblock %}
@@ -18,10 +17,9 @@
 </head>
 <body>
     <header class='page-header'>
-        <span class='header-logo'>Mirabile</span>
-        <div class='header-link'>
-            <a href='#' class='link-logn'>Zaloguj się</a>
-            <a href='#' class='link-register'>Zarejestruj się</a>
+        <div class='container'>
+            <a class='header-logo' href='{% url "collection" %}'>Mirabile</a>
+            <a href='#' class='header-login'></a>
         </div>
     </header>
     <div class="page-content">
@@ -29,7 +27,10 @@
     {% endblock %}
     </div>
     <footer class='page-footer'>
-        &copy Copyright 2019
+        <div class="container">
+            <span>&copy Copyright 2019</span>
+            <a href="mailto:aneta.rolnik@gmail.com">Design: A&J</a>
+        </div>
     </footer>
     <div class="modal-content confirm-delete" style="display: none">
         <form action='.' method='POST'>{% csrf_token %}

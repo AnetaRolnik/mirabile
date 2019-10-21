@@ -5,12 +5,14 @@ const sourcemaps      = require("gulp-sourcemaps");
 const plumber         = require("gulp-plumber");
 const rename          = require("gulp-rename");
 const webpack         = require("webpack");
+const wait            = require('gulp-wait');
 const csso            = require('gulp-csso');
 const browserSync     = require('browser-sync').create();
 const exec            = require('child_process').exec;
 
 gulp.task("sass", function() {
     return gulp.src("./blog/static/src/styles/main.scss")
+        .pipe(wait(500))
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(sass({
