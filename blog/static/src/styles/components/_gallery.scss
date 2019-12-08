@@ -1,0 +1,36 @@
+.collection-post {
+    &:hover {
+        .post-show::before, .post-author, .post-date {
+            display: block;
+        }
+    }
+}
+
+.post-show {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.6);
+        display: none;
+    }
+}
+
+.post-photo {
+    max-width: 100%;
+}
+
+.post-author, .post-date {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}

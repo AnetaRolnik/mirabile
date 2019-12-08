@@ -26,5 +26,8 @@
     "gulp-watch": "^4.3.11",
     "webpack": "^4.2.0",
     "webpack-cli": "^2.0.13"
+  },
+  "dependencies": {
+    "macy": "^2.5.0"
   }
 }
