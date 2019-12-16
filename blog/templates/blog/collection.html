@@ -2,18 +2,19 @@
 
 {% block content %}
     {% if is_author %}
-        <div class='collection'>
-            <div class="container">
-                <a class='collection-new' href='{% url "post_new" %}'>Dodaj nowe zdjęcie</a>
+        <div class="container">
+            <a class='collection-new' href='{% url "post_new" %}'>Dodaj nowe zdjęcie</a>
+            <div class='collection'>
                 {% for post in posts %}
                     <div class='collection-post' data-title='{{ post.title }}'>
                         <a class='post-show'>
-                            <span class='post-author'>{{ post.author }}</span>
-                            <span class='post-date'>{{  post.published_date }}</span>
+                            <span class='post-metadata post-date'>{{  post.published_date }}</span>
                             <img class='post-photo' src='{{ post.photo.url }}'>
                         </a>
-                        <a class='post-edit' href='{% url "post_edit" id=post.id %}'>Edytuj zdjęcie</a>
-                        <button class='post-delete' data-url='{% url "post_delete" id=post.id %}'>Usuń zdjęcie</button>
+                        <div class="post-manage">
+                            <a class='post-edit' href='{% url "post_edit" id=post.id %}'>Edytuj zdjęcie</a>
+                            <button class='post-delete' data-url='{% url "post_delete" id=post.id %}'>Usuń zdjęcie</button>
+                        </div>
                     </div>
                     {% empty %}
                     <p class='collection-empty'>Twoja kolekcja jest pusta :( Dodaj swoje zdjęcia i pokaż innym co u Ciebie</p>
@@ -21,13 +22,15 @@
             </div>
         </div>
     {% else %}
-        <div class="collection">
-            <div class="container">
+        <div class="container">
+            <div class="collection">
                 {% for post in posts %}
                     <div class='collection-post'>
                         <a class='post-show'>
-                            <span class='post-author'>{{ post.author }}</span>
-                            <span class='post-date'>{{  post.published_date }}</span>
+                            <div class="post-metadata">
+                                <span class='post-author'>{{ post.author }}</span>
+                                <span class='post-date'>{{  post.published_date }}</span>
+                            </div>
                             <img class='post-photo' src='{{ post.photo.url }}'>
                         </a>
                     </div>
