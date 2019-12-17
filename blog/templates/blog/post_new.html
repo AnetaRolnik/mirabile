@@ -15,12 +15,12 @@
             <form method="POST" class="post-new-form" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
-                    <div>
-                        <label>{{ field.label }}</label>
+                    <div class="post-new-field">
+                        <label class="post-new-label">{{ field.label }}</label>
                         {{ field }}
                     </div>
                 {% endfor %}
-                <button type="submit" class="form-save">Dodaj</button>
+                <button type="submit" class="form-save">Dodaj post</button>
             </form>
         </div>
     </div>
