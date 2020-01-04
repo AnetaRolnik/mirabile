@@ -1,7 +1,10 @@
 export default function managePost() {
     const publishedDate = document.querySelector('#publishedDate'),
         options = document.querySelectorAll('#managePost input'),
-        laterPublish = document.querySelector('#managePost_1');
+        laterPublish = document.querySelector('#managePost_1'),
+        nowPublish = document.querySelector('#managePost_0');
+
+    nowPublish.checked = true;
 
     publishedDate !== null ? publishedDate.parentElement.style.display = 'none' : null;
 

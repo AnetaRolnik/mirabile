@@ -4,7 +4,7 @@ from .models import Post
 
 CHOICES= [
     ('now','Opublikuj teraz'),
-    ('later','Zaplanuj na później')
+    ('later','Zaplanuj post')
 ]
 
 class PostForm(forms.ModelForm):
@@ -12,9 +12,9 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'photo', 'manage_post', 'published_date',)
+        fields = ('photo', 'title', 'manage_post', 'published_date',)
         widgets = {
-            'published_date': DateTimePickerInput(attrs={'id' : 'publishedDate'}),
+            'published_date': DateTimePickerInput(attrs={'id' : 'publishedDate', 'placeholder' : 'Wybierz datę'}),
         }
 
     def __init__(self, *args, **kwargs):

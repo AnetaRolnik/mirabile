@@ -15,9 +15,12 @@
             <form method="POST" class="post-new-form" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% for field in form %}
-                    <div class="post-new-field">
+                    <div class="post-new-field {{field.name}}">
                         <label class="post-new-label">{{ field.label }}</label>
                         {{ field }}
+                        {% if field.name == 'photo' %}
+                            <img id="file" src="#" alt="Podgląd zdjęcia" class="photo_empty"/>
+                        {% endif %}
                     </div>
                 {% endfor %}
                 <button type="submit" class="form-save">Dodaj post</button>
