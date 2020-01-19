@@ -1,4 +1,4 @@
-export default function uploadFile() {
+function uploadFile() {
     const inputFile = document.querySelector('#id_photo'),
         file = document.querySelector('#file');
 
@@ -16,3 +16,5 @@ export default function uploadFile() {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", uploadFile);

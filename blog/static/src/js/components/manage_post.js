@@ -1,4 +1,4 @@
-export default function managePost() {
+function managePost() {
     const publishedDate = document.querySelector('#publishedDate'),
         options = document.querySelectorAll('#managePost input'),
         laterPublish = document.querySelector('#managePost_1'),
@@ -18,3 +18,5 @@ export default function managePost() {
         });
     }
 }
+
+document.addEventListener("DOMContentLoaded", managePost);

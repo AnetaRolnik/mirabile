@@ -1,13 +1,13 @@
-export default function confirmDelete() {
+function confirmDelete() {
     const deletePost = document.querySelectorAll('.post-delete'),
-    modal = document.querySelector('.confirm-delete'),
-    cancelModal = modal.querySelector('.modal-cancel'),
-    imageModal = modal.querySelector('img'),
-    formModal = modal.querySelector('form');
+        modal = document.querySelector('.confirm-delete'),
+        cancelModal = modal.querySelector('.modal-cancel'),
+        imageModal = modal.querySelector('img'),
+        formModal = modal.querySelector('form');
 
     function showModal() {
         modal.style.display = 'block';
-        imageModal.src = this.parentElement.querySelector('img').src;
+        imageModal.src = this.parentElement.parentElement.querySelector('.post-photo').src;
         formModal.action = this.dataset.url;
     }
 
@@ -20,3 +20,5 @@ export default function confirmDelete() {
     }
     cancelModal.addEventListener('click', hideModal);
 }
+
+document.addEventListener("DOMContentLoaded", confirmDelete);

@@ -1,4 +1,4 @@
-export default function postDetail() {
+function postDetail() {
     const showPost = document.querySelectorAll('.post-show'),
         modal = document.querySelector('.post-detail'),
         cancelModal = modal.querySelector('.detail-close'),
@@ -9,7 +9,8 @@ export default function postDetail() {
 
     function showDetail() {
         modal.style.display = "block";
-        photoModal.src = this.parentElement.querySelector('img').src;
+        console.log(this.parentElement);
+        photoModal.src = this.parentElement.querySelector('.post-photo').src;
         titleModal.textContent = this.parentElement.dataset.title;
         dateModal.textContent = this.parentElement.querySelector('.post-date').textContent;
         authorModal.textContent = this.parentElement.querySelector('.post-author').textContent;
@@ -24,3 +25,5 @@ export default function postDetail() {
     }
     cancelModal.addEventListener('click', hidePost);
 }
+
+document.addEventListener("DOMContentLoaded", postDetail);

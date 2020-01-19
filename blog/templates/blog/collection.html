@@ -1,5 +1,10 @@
 {% extends 'blog/base.html' %}
 
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/macy@2"></script>
+    <script src="../../static/dist/gallery.min.js"></script>
+{% endblock %}
+
 {% block content %}
     {% if is_author %}
         <div class="container">
@@ -8,7 +13,10 @@
                 {% for post in posts %}
                     <div class='collection-post' data-title='{{ post.title }}'>
                         <a class='post-show'>
-                            <span class='post-metadata post-date'>{{  post.published_date }}</span>
+                            <div class="post-metadata">
+                                <span class='post-author' style="display: none;">{{ post.author }}</span>
+                                <span class='post-date'>{{  post.published_date }}</span>
+                            </div>
                             <img class='post-photo' src='{{ post.photo.url }}'>
                         </a>
                         <div class="post-manage">
