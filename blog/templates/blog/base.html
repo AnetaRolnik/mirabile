@@ -19,7 +19,11 @@
     <header class='page-header'>
         <div class='container'>
             <a class='header-logo' href='{% url "collection" %}'>Mirabile</a>
-            <a href='#' class='header-login'></a>
+            {% if user.is_authenticated %}
+                <a class='header-login' href='{% url "collection" %}'></a>
+            {% else %}
+                <a class='header-login' href='{% url "login" %}'></a>
+            {% endif %}
         </div>
     </header>
     <div class="page-content">
