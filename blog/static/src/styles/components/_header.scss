@@ -13,17 +13,20 @@
         align-items: center;
         height: inherit;
     }
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .header-logo {
     color: $main-color;
     font-family: 'Leckerli One', cursive;
     font-size: 24px;
-    text-decoration: none;
 }
 
-.header-login {
-    background: url('../images/user.svg') no-repeat;
-    width: 30px;
-    height: 30px;
+.header-icon {
+    font-size: 22px;
+    color: $dark-color;
+    margin-left: 10px;
 }
