@@ -21,7 +21,7 @@
             <a class='header-logo' href='{% url "collection" %}'>Mirabile</a>
             <div>
             {% if user.is_authenticated %}
-                <a href='{% url "collection" %}'>
+                <a href='{% url "collection" pk=user.id %}'>
                     <i class='header-icon icon-user-fill'></i>
                 </a>
                 <a href='{% url "logout" %}'>
