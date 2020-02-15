@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Post
 from .forms import PostForm
 from django.http import HttpResponseForbidden
+from django.contrib import messages
 
 
 def collection(request, **kwargs):
@@ -26,9 +27,11 @@ def post_new(request):
             print(form.cleaned_data)
             post.author = request.user
             post.save()
+            messages.success(request, 'Post został dodany.')
             return redirect(reverse('collection', kwargs={'pk': post.author.id}))
     else:
         form = PostForm()
+        messages.error(request, 'Dodawanie postu nie powiodło się.')
     return render(request, 'blog/post_new.html', {"form": form})
 
 def post_delete(request, id):
@@ -38,7 +41,10 @@ def post_delete(request, id):
 
     if request.method == "POST":
         post.delete()
+        messages.success(request, 'Zdjęcie zostało usunięte.')
         return redirect(reverse('collection', kwargs={'pk': post.author.id}))
+    else:
+        messages.error(request, 'Usuwanie zdjęcia nie powiodło się.')
     context = {
         "post": post
     }
@@ -55,9 +61,11 @@ def post_edit(request, id):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
+            messages.success(request, 'Post został edytowany.')
             return redirect(reverse('collection', kwargs={'pk': post.author.id}))
     else:
         form = PostForm(instance=post)
+        messages.error(request, 'Edytowanie postu nie powiodło się.')
     return render(request, 'blog/post_new.html', {"form": form})
 
 

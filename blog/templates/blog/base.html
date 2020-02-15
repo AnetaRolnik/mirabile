@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="../../static/dist/modal.min.js"></script>
+    <script src="../../static/dist/base.min.js"></script>
     <link href="../../static/dist/style.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Leckerli+One&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel='shortcut icon' type='image/x-icon' href='../../static/images/favicon.ico' />
@@ -37,17 +37,28 @@
             {% endif %}
             </div>
         </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     </header>
+    
     <div class="page-content">
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
+
     <footer class='page-footer'>
         <div class="container">
             <span>&copy Copyright 2019</span>
             <a href="mailto:aneta.rolnik@gmail.com">Design: A&J</a>
         </div>
     </footer>
+
     <div class="modal-content confirm-delete" style="display: none">
         <form action='.' method='POST'>{% csrf_token %}
             <p>Czy na pewno chcesz usunąć zdjęcie?</p>
@@ -56,6 +67,7 @@
             <button class='modal-cancel' type='button'>Anuluj</button>
         </form>
     </div>
+
     <div class="modal-content post-detail" style="display: none">
         <img class='detail-photo' src=''>
         <div>
