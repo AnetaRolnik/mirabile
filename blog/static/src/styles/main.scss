@@ -4,7 +4,9 @@
 @import './base/font';
 @import './base/base';
 
-@import './components/header';
-@import './components/footer';
-@import './components/gallery';
-@import './components/newPost';
+@import './layout/header';
+@import './layout/footer';
+@import './layout/gallery';
+@import './layout/newPost';
+
+@import './components/messages';

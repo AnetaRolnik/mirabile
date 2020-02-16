@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: {
         collection: './blog/static/src/js/components/masonry.js',
-        base: ['./blog/static/src/js/components/post_detail.js', './blog/static/src/js/components/confirm_delete.js'],
+        base: ['./blog/static/src/js/components/post_detail.js', './blog/static/src/js/components/confirm_delete.js', './blog/static/src/js/components/hide_messages.js'],
 		post_new: ['./blog/static/src/js/components/upload_file.js', "./blog/static/src/js/components/manage_post.js"],
     },
     output: {

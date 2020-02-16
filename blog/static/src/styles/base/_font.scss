@@ -45,11 +45,11 @@
         content: '\e803'; 
     }
 
-    &user::before { 
+    &user-fill::before { 
         content: '\e804'; 
     }
 
-    &user-fill::before { 
-        content: '\e805'; 
+    &close::before {
+        content: '\e805';
     }
 }
