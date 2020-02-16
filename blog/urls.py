@@ -10,6 +10,6 @@ urlpatterns = [
     path('post/new', views.post_new, name='post_new'),
     path('post/<int:id>/delete', views.post_delete, name='post_delete'),
     path('post/<int:id>/edit', views.post_edit, name='post_edit'),
-    path('login/', LoginView.as_view(template_name='blog/registration/login.html'), name='login'),
+    path('login/', views.ExtendedLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(template_name='blog/base.html'), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

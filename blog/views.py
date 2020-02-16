@@ -4,6 +4,7 @@ from .models import Post
 from .forms import PostForm
 from django.http import HttpResponseForbidden
 from django.contrib import messages
+from django.contrib.auth.views import LoginView
 
 
 def collection(request, **kwargs):
@@ -29,9 +30,10 @@ def post_new(request):
             post.save()
             messages.success(request, 'Post został dodany.')
             return redirect(reverse('collection', kwargs={'pk': post.author.id}))
+        else:
+            messages.error(request, 'Dodawanie postu nie powiodło się.')
     else:
         form = PostForm()
-        messages.error(request, 'Dodawanie postu nie powiodło się.')
     return render(request, 'blog/post_new.html', {"form": form})
 
 def post_delete(request, id):
@@ -39,16 +41,9 @@ def post_delete(request, id):
     if not request.user.id == post.author.id:
         return HttpResponseForbidden()
 
-    if request.method == "POST":
-        post.delete()
-        messages.success(request, 'Zdjęcie zostało usunięte.')
-        return redirect(reverse('collection', kwargs={'pk': post.author.id}))
-    else:
-        messages.error(request, 'Usuwanie zdjęcia nie powiodło się.')
-    context = {
-        "post": post
-    }
-    return render(request, 'blog/base.html', context)
+    post.delete()
+    messages.success(request, 'Zdjęcie zostało usunięte.')
+    return redirect(reverse('collection', kwargs={'pk': post.author.id}))
 
 def post_edit(request, id):
     post = get_object_or_404(Post, id=id)
@@ -63,10 +58,16 @@ def post_edit(request, id):
             post.save()
             messages.success(request, 'Post został edytowany.')
             return redirect(reverse('collection', kwargs={'pk': post.author.id}))
+        else:
+            messages.error(request, 'Edytowanie postu nie powiodło się.')
     else:
         form = PostForm(instance=post)
-        messages.error(request, 'Edytowanie postu nie powiodło się.')
     return render(request, 'blog/post_new.html', {"form": form})
 
+class ExtendedLoginView(LoginView):
+    template_name='blog/registration/login.html'
 
-
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect(reverse('collection'))
+        return super(LoginView, self).dispatch(request, *args, **kwargs)
