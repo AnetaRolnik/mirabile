@@ -41,7 +41,7 @@
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            <li{% if message.tags %} class="message message--{{ message.tags }}"{% endif %}>
                 {{ message }} 
                 <i class='icon-close'></i>
             </li>

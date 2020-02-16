@@ -8,7 +8,7 @@
 {% block content %}
     {% if is_author %}
         <div class="container">
-            <a class='collection-new' href='{% url "post_new" %}'>Dodaj nowe zdjęcie</a>
+            <a class='collection-new btn btn--primary' href='{% url "post_new" %}'>Dodaj nowe zdjęcie</a>
             <div class='collection'>
                 {% for post in posts %}
                     <div class='collection-post' data-title='{{ post.title }}'>
