@@ -6,13 +6,13 @@ function confirmDelete() {
         formModal = modal.querySelector('form');
 
     function showModal() {
-        modal.style.display = 'block';
+        modal.classList.add('show');
         imageModal.src = this.parentElement.parentElement.querySelector('.post-photo').src;
         formModal.action = this.dataset.url;
     }
 
     function hideModal() {
-        modal.style.display = 'none';
+        modal.classList.remove('show');
     }
 
     for(let i=0; i<deletePost.length; i++) {

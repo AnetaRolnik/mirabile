@@ -62,23 +62,27 @@
         </div>
     </footer>
 
-    <div class="modal-content confirm-delete" style="display: none">
-        <form action='.' method='POST'>{% csrf_token %}
-            <p>Czy na pewno chcesz usunąć zdjęcie?</p>
-            <img src=''>
-            <input class='modal-confirm' type='submit' value='Tak'>
-            <button class='modal-cancel' type='button'>Anuluj</button>
-        </form>
+    <div class="modal confirm-delete">
+        <div class="modal-content">
+            <form action='.' method='POST'>{% csrf_token %}
+                <p>Czy na pewno chcesz usunąć zdjęcie?</p>
+                <img src=''>
+                <input class='modal-confirm' type='submit' value='Tak'>
+                <button class='modal-cancel' type='button'>Anuluj</button>
+            </form>
+        </div>
     </div>
 
-    <div class="modal-content post-detail" style="display: none">
-        <img class='detail-photo' src=''>
-        <div>
-            <h2 class='detail-title'>Tytuł</h2>
-            <span class='detail-author'>Autor</span>
-            <span class='detail-date'>Data</span>
+    <div class="modal post-detail">
+        <div class="modal-content">
+            <img class='detail-photo' src=''>
+            <div>
+                <h2 class='detail-title'>Tytuł</h2>
+                <span class='detail-author'>Autor</span>
+                <span class='detail-date'>Data</span>
+            </div>
+            <button class='detail-close'>Close</button>
         </div>
-        <button class='detail-close'>Close</button>
     </div>
 </body>
 </html>
