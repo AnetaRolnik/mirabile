@@ -12,4 +12,5 @@ urlpatterns = [
     path('post/<int:id>/edit', views.post_edit, name='post_edit'),
     path('login/', views.ExtendedLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(template_name='blog/base.html'), name='logout'),
+    path('<int:page>/<int:number_of_elem>', views.infinite_scroll, name='infinite_scroll')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
