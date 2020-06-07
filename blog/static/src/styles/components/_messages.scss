@@ -17,15 +17,16 @@
     font-size: 18px;
     position: relative;
 
-    &--info {
-        background: rgba(#6d87f9, .9);
+    @include modifier('info') {
+        background: rgba($info, .9);
     }
 
-    &--success {
-        background: rgba(#72f75b, .9);
+    @include modifier('success') {
+        background: rgba($success, .9);
     }
 
-    &--error {
-        background: rgba(#ff4c4c, .9);
+    @include modifier('error') {
+        background: rgba($error, .9);
     }
 }
+

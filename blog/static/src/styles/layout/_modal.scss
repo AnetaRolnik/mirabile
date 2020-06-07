@@ -9,17 +9,17 @@
     height: 100%;
     background: rgba(0, 0, 0, .8);
 
-    &.show {
+    @include modifier('show') {
         display: block;
     }
-}
 
-.modal-content {
-    margin: 35px 5%;
-    max-width: 700px;
+    @include element('content') {
+        margin: 35px 5%;
+        max-width: 700px;
 
-    @include media(md) {
-        margin-left: auto;
-        margin-right: auto;
+        @include media(md) {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }

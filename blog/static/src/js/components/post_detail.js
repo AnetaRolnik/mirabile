@@ -8,7 +8,7 @@ function postDetail() {
         authorModal = modal.querySelector('.detail-author');
 
     function showDetail() {
-        modal.classList.add('show');
+        modal.classList.add('modal--show');
         photoModal.src = this.parentElement.querySelector('.post-photo').src;
         titleModal.textContent = this.parentElement.dataset.title;
         dateModal.textContent = this.parentElement.querySelector('.post-date').textContent;
@@ -16,7 +16,7 @@ function postDetail() {
     }
 
     function hidePost() {
-        modal.classList.remove('show');
+        modal.classList.remove('modal--show');
     }
 
     for(let i=0; i<showPost.length; i++) {
