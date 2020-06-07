@@ -24,7 +24,7 @@
         }
     
         &:hover {
-            color: #fff;
+            color: $white;
     
             &::before {
                 transform: translateX(100%);

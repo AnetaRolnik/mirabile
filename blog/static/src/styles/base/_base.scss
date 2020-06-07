@@ -2,8 +2,25 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Lato', sans-serif;
+    min-height: 100%;
+    margin: 0;
+    position: relative;
+    font-size: 16px;
+    color: $dark-color;
+    background-color: $white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .container {
@@ -13,5 +30,6 @@ body {
 }
 
 .page-content {
-    margin: 90px 0;
+    padding: 90px 0;
 }
+

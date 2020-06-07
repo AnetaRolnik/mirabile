@@ -1,18 +1,15 @@
-.page-footer {
+.footer {
     background: $dark-color;
     padding: 15px 0;
+    font-size: 14px;
+    color: $white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 
     .container {
         display: flex;
         justify-content: space-between;
-    }
-
-    span, a {
-        color: #fff;
-        font-size: 14px;
-    }
-
-    a {
-        text-decoration: none;
     }
 }
