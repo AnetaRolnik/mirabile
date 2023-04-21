@@ -3,4 +3,4 @@ django-flatpickr==1.0.1
 Pillow==6.2.0
 psycopg2==2.8.3
 pytz==2019.2
-sqlparse==0.3.0
+sqlparse==0.4.4
